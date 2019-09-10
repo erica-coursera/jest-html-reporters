@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
   const jsonReport = require('./devMock.json')
   data = {
     ...jsonReport,
-    config: { rootDir: '/' },
+    config: {},
     endTime: jsonReport.testResults
       .map(({ perfStats: { end } }) => end)
       .sort()
