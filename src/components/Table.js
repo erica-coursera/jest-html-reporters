@@ -113,7 +113,7 @@ const getColumns = (rootDir) => [
     width: '100px',
     title: 'Action',
     key: 'operation',
-    render: ({ failureMessage }) => <ErrorButton failureMessage={failureMessage} />
+    render: ({ failureMessage, timelineTraceLink }) => <ErrorButton failureMessage={failureMessage} timelineTraceLink={timelineTraceLink} />
   },
 ]
 
@@ -134,7 +134,7 @@ const TableItem = ({ testResults, config: { rootDir }, globalExpandState }) =>
             return getRecordClass(status, index)
           }}
           expandedRowRender={
-            ({ testResults }) => <DetailTable data={testResults} />
+            ({ testResults, timelineTraceLink }) => <DetailTable data={testResults.map((testResult) => ({ ...testResult, timelineTraceLink }))} />
           }
           expandedRowKeys={getExistKeys(expand, globalExpandState)}
           onExpand={(state, { testFilePath }) => toggleExpand({ key: testFilePath, state })}
