@@ -115,34 +115,30 @@ const Information = ({
   testResults,
 }) =>
   <Consumer>
-    {({ toggleExpand }) => (
-      <Row>
-        <Col span={24} className='main_information'>
-          <Card>
-            <Row span={24}>
-              <Col span={16}>
-                <LabelInfo
-                  title='Start time'
-                  context={formatDate(startTime)}
-                  icon={<Icon type='box-plot' theme='filled' />}
-                />
-                <LabelInfo
-                  title='Total time'
-                  context={getFormatTime(startTime, endTime)}
-                  icon={<Icon type='clock-circle' theme='filled' />}
-                />
-                {rootDir ? (
-                  <LabelInfo title='RootDir' context={rootDir} icon={<Icon type='folder' theme='filled' />} />
-                ) : null}
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-        <Col span={24}>
-          <SimpleBarChart data={testResults} rootDir={rootDir} />
-        </Col>
-      </Row>
-    )}
+    {
+      ({ toggleExpand }) => (
+        <Row>
+          <Col span={24} className='main_information'>
+            <Card>
+              <Row span={24}>
+                <Col span={16}>
+                  <LabelInfo title='Start time' context={formatDate(startTime)} icon={<Icon type='box-plot' theme='filled' />} />
+                  <LabelInfo title='Total time' context={getFormatTime(startTime, endTime)} icon={<Icon type='clock-circle' theme='filled' />} />
+                  {
+                    rootDir ? (
+                      <LabelInfo title='RootDir' context={rootDir} icon={<Icon type='folder' theme='filled' />} />
+                    ) : null
+                  }
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+          <Col span={24}>
+            <SimpleBarChart data={testResults} rootDir={rootDir} />
+          </Col>
+        </Row>
+      )
+    }
   </Consumer>
 
 export default Information
