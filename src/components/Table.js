@@ -46,7 +46,7 @@ const renderStatus = ({ numPassingTests, numFailingTests, numPendingTests, numTo
 
 const renderTime = ({ perfStats: { start, end } }) => getFormatTime(start, end)
 
-const getColumns = (rootDir) => [
+const getColumns = rootDir => [
   {
     title: 'File',
     dataIndex: 'testFilePath',
@@ -60,9 +60,8 @@ const getColumns = (rootDir) => [
               type='file'
               theme='twoTone'
               onClick={() => {
-                const execCommand = 'npx jest .' + relativePath
-                copy(execCommand)
-                message.success('Copy succeed! The command has been copied to the clipboard.')
+                copy(relativePath)
+                message.success('Copy succeed! The path has been copied to the clipboard.')
               }}
             />
           </span>
